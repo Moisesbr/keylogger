@@ -12,7 +12,7 @@ Capture global keyboard events on Linux
 
 ## Installation
 ```sh
-go get github.com/MarinX/keylogger
+go get github.com/Moisesbr/keylogger
 ```
 
 ## Getting started
