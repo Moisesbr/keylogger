@@ -32,7 +32,7 @@ func New(devPath string) (*KeyLogger, error) {
 // FindKeyboardDevice by going through each device registered on OS
 // Mostly it will contain keyword - keyboard
 // Returns the file path which contains events
-func FindKeyboardDevice() string {
+func FindKeyboardDevice(found string) string {
 	fmt.Println("Mod Lib. 1.0")
 	path := "/sys/class/input/event%d/device/name"
 	resolved := "/dev/input/event%d"
@@ -42,7 +42,7 @@ func FindKeyboardDevice() string {
 		if err != nil {
 			logrus.Error(err)
 		}
-		if strings.Contains(strings.ToLower(string(buff)), "sunxi_usb_udc") {
+		if strings.Contains(strings.ToLower(string(buff)), found) { //
 			return fmt.Sprintf(resolved, i)
 		}
 	}
