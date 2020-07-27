@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"strings"
 	"syscall"
@@ -63,7 +64,7 @@ func (k *KeyLogger) Read() chan InputEvent {
 		for {
 			e, err := k.read()
 			if err != nil {
-				logrus.Error(err)
+				log.Fatal("Acesso ao Leitor perdido: ", err)
 				close(event)
 				break
 			}
